@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "f7abba86-1729-406d-a32b-708d4b39c9d2",
+		"name": "Proyecto_Loto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "conectar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"s\" : \"betulio\",\n\t\"i\" : 0\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/conectar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"conectar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancia_apostador_todo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdida_apostador",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_apostador_fecha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"fecha\" : \"2017-10-10\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanFech",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanFech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_apostador_fecha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"fecha\" : \"2017-10-10\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerFech",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerFech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_apostador_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"id_juego\" : 1\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_apostador_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"id_juego\" : 1\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_apostador_fecha_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"fecha\" : \"2000-10-10\",\n\t\"id_juego\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanFechJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanFechJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_apostador_fecha_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"fecha\" : \"2000-10-10\",\n\t\"id_juego\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerFechJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerFechJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_normal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanNor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanNor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_normal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerNor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerNor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_normal_fecha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"fecha\" : \"2018-12-12\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanNorFech",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanNorFech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_normal_fecha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 1,\n\t\"fecha\" : \"2018-12-12\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerNorFech",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerNorFech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_normal_fecha_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 2,\n\t\"fecha\" : \"2018-12-12\",\n\t\"id_juego\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanNorFechJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanNorFechJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_normal_fecha_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 2,\n\t\"fecha\" : \"2018-12-12\",\n\t\"id_juego\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerNorFechJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerNorFechJue"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,5 @@
+insert into tb_comision (id_comision,id_usuario,COMISIONVENTA,COMISIONPARTICIPACION,FECHAINICIO,FECHAFIN,ESTATUS) 
+values (2,2,10,10,"1998-11-2","2001-11-2",1);
+
+insert into tb_comision (id_comision,id_usuario,COMISIONVENTA,COMISIONPARTICIPACION,FECHAINICIO,FECHAFIN,ESTATUS) 
+values (1,2,20,10,"2001-11-3","2010-11-2",1);

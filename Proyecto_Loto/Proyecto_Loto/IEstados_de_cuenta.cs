@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+
+namespace Proyecto_Loto
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IEstados_de_cuenta" in both code and config file together.
+    [ServiceContract]
+    public interface IEstados_de_cuenta
+    {
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/conectar",
+                    ResponseFormat = WebMessageFormat.Json,
+                    RequestFormat = WebMessageFormat.Json,
+                    BodyStyle = WebMessageBodyStyle.Wrapped)]
+        string conectarBaseDatos(string s, int i);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/desconectar",
+            ResponseFormat = WebMessageFormat.Json,
+            RequestFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Wrapped)]
+        string desconectarBaseDatos();
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGan",
+                   ResponseFormat = WebMessageFormat.Json,
+                   RequestFormat = WebMessageFormat.Json,
+                   BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_apostador(int id_usuario);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPer",
+                   ResponseFormat = WebMessageFormat.Json,
+                   RequestFormat = WebMessageFormat.Json,
+                   BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_apostador(int id_usuario);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanFech",
+                   ResponseFormat = WebMessageFormat.Json,
+                   RequestFormat = WebMessageFormat.Json,
+                   BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_apostador_fecha(int id_usuario, string fecha);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerFech",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_apostador_fecha(int id_usuario, string fecha);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_apostador_juego(int id_usuario, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_apostador_juego(int id_usuario, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanFechJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_apostador_fecha_juego(int id_usuario, string fecha, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerFechJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_apostador_fecha_juego(int id_usuario, string fecha, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNor",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_normal(int id_usuario);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNor",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_normal(int id_usuario);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNorFech",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_normal_fecha(int id_usuario, string fecha);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorFech",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_normal_fecha(int id_usuario, string fecha);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNorFechJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_normal_fecha_juego(int id_usuario, string fecha, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorFechJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_normal_fecha_juego(int id_usuario, string fecha, int id_juego);
+    }
+
+
+}
