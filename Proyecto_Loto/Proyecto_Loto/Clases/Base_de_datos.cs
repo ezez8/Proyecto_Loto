@@ -64,13 +64,12 @@ namespace Proyecto_Loto.Clases
 
                 cmd = new MySqlCommand(consulta, Conexion);
                 MySqlDataReader myReader = cmd.ExecuteReader();
-                MySqlDataReader prueba = cmd.ExecuteReader();
-
+ 
                 float total_ganado = 0;
                 float total_apostado = 0;
-
-                if (!prueba.Read()) throw new UsuarioInvalidoException();
-
+                
+                //if (!myReader.Read()) throw new UsuarioInvalidoException();
+ 
                 while (myReader.Read())
                 {
                     total_ganado += myReader.GetFloat(0);
@@ -78,6 +77,7 @@ namespace Proyecto_Loto.Clases
                 }
 
                 myReader.Close();
+                
 
                 if ((total_ganado - total_apostado) > 0)
                     return total_ganado - total_apostado;
@@ -96,12 +96,12 @@ namespace Proyecto_Loto.Clases
 
         public static float consultar_perdidas_usuario_apostador(int id_usuario)
         {
-            string consulta = "select monto_pagado, MONTO_APUESTA from tb_ticket A, tb_usuario B" +
+            try
+            {
+                string consulta = "select monto_pagado, MONTO_APUESTA from tb_ticket A, tb_usuario B" +
                 " where A.id_usuario = B.id_usuario and B.id_usuario = "
                 + id_usuario;
 
-            try
-            {
                 cmd = new MySqlCommand(consulta, Conexion);
                 MySqlDataReader myReader = cmd.ExecuteReader();
 
@@ -163,13 +163,14 @@ namespace Proyecto_Loto.Clases
 
         public static float consultar_perdidas_usuario_apostador_fecha(int id_usuario, string fecha)
         {
-            string consulta = "select monto_pagado, monto_apuesta " +
+            try
+            {
+                string consulta = "select monto_pagado, monto_apuesta " +
                  "from tb_ticket A, tb_usuario B " +
                  "where A.id_usuario = B.id_usuario and fecha_hora >= \"" + fecha +
                  "\" and A.id_usuario = " + id_usuario;
 
-            try
-            {
+
                 cmd = new MySqlCommand(consulta, Conexion);
                 MySqlDataReader myReader = cmd.ExecuteReader();
 
@@ -197,7 +198,9 @@ namespace Proyecto_Loto.Clases
 
         public static float consultar_ganancias_usuario_apostador_juego(int id_usuario, int id_juego)
         {
-            string consulta = "select tb_ticket.MONTO_PAGADO, tb_ticket.MONTO_APUESTA " +
+            try
+            {
+                string consulta = "select tb_ticket.MONTO_PAGADO, tb_ticket.MONTO_APUESTA " +
                 "from tb_usuario_sorteo_item, tb_item, tb_juego, tb_usuario, tb_ticket " +
                 "where tb_juego.ID_JUEGO = tb_item.ID_JUEGO " +
                 "and tb_ticket.ID_USUARIO = tb_usuario.ID_USUARIO " +
@@ -206,8 +209,7 @@ namespace Proyecto_Loto.Clases
                 "and tb_usuario.ID_USUARIO = " + id_usuario +
                 "and tb_juego.ID_JUEGO = " + id_juego;
 
-            try
-            {
+
                 cmd = new MySqlCommand(consulta, Conexion);
                 MySqlDataReader myReader = cmd.ExecuteReader();
 
