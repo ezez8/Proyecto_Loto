@@ -124,6 +124,21 @@ namespace Proyecto_Loto
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
         float consultar_perdidas_normal_fecha_juego(int id_usuario, string fecha, int id_juego);
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHijFechJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_hijo_fecha_juego(int id_usuario, string fecha, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHijFechJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_hijo_fecha_juego(int id_usuario, string fecha, int id_juego);
     }
 
 

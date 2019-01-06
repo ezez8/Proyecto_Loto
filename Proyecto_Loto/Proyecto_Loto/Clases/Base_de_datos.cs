@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace Proyecto_Loto.Clases
         public static MySqlConnection Conexion;
         public static MySqlCommand cmd;
         public static MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
+        public static ArrayList Conexiones = new ArrayList();
 
         public static string Conectar()
         {
@@ -66,11 +68,11 @@ namespace Proyecto_Loto.Clases
                 float total_ganado = 0;
                 float total_apostado = 0;
 
-                 while (myReader.Read())
-                 {
-                     total_ganado += myReader.GetFloat(0);
-                     total_apostado += myReader.GetFloat(1);
-                 }
+                while (myReader.Read())
+                {
+                    total_ganado += myReader.GetFloat(0);
+                    total_apostado += myReader.GetFloat(1);
+                }
 
                 myReader.Close();
 
@@ -119,12 +121,12 @@ namespace Proyecto_Loto.Clases
         }
 
         public static float consultar_ganancias_usuario_apostador_fecha(int id_usuario, string fecha)
-        {                  
-           string consulta = "select monto_pagado, monto_apuesta " +
-                "from tb_ticket A, tb_usuario B " +
-                "where A.id_usuario = B.id_usuario and fecha_hora >= \"" + fecha +
-                "\" and A.id_usuario = "+ id_usuario;
-        
+        {
+            string consulta = "select monto_pagado, monto_apuesta " +
+                 "from tb_ticket A, tb_usuario B " +
+                 "where A.id_usuario = B.id_usuario and fecha_hora >= \"" + fecha +
+                 "\" and A.id_usuario = " + id_usuario;
+
             try
             {
                 cmd = new MySqlCommand(consulta, Conexion);
@@ -262,7 +264,7 @@ namespace Proyecto_Loto.Clases
             }
         }
 
-        public static float consultar_ganancias_usuario_apostador_fecha_juego(int id_usuario,string fecha, int id_juego)
+        public static float consultar_ganancias_usuario_apostador_fecha_juego(int id_usuario, string fecha, int id_juego)
         {
             string consulta = "select tb_ticket.MONTO_PAGADO, tb_ticket.MONTO_APUESTA " +
                 "from tb_usuario_sorteo_item, tb_item, tb_juego, tb_usuario, tb_ticket " +
@@ -271,8 +273,8 @@ namespace Proyecto_Loto.Clases
                 "and tb_usuario.ID_USUARIO = tb_usuario_sorteo_item.ID_USUARIO " +
                 "and tb_usuario_sorteo_item.ID_ITEM = tb_item.ID_ITEM " +
                 "and tb_usuario.ID_USUARIO = " + id_usuario +
-                "and tb_ticket.FECHA_HORA >= \""+ fecha +"\" " +
-                "and tb_juego.ID_JUEGO = " + id_juego;  
+                "and tb_ticket.FECHA_HORA >= \"" + fecha + "\" " +
+                "and tb_juego.ID_JUEGO = " + id_juego;
 
             try
             {
@@ -381,7 +383,7 @@ namespace Proyecto_Loto.Clases
 
                 myReader.Close();
 
-                if(totalganancias > totalperdidas)
+                if (totalganancias > totalperdidas)
                     return totalganancias - totalperdidas;
 
                 return 0;
@@ -440,7 +442,7 @@ namespace Proyecto_Loto.Clases
             }
         }
 
-        public static float consultar_ganancias_usuario_normal_fecha(int id_usuario,string fecha)
+        public static float consultar_ganancias_usuario_normal_fecha(int id_usuario, string fecha)
         {
             string consulta = "select MONTO_PAGADO, MONTO_APUESTA, COMISIONVENTA, COMISIONPARTICIPACION" +
                 " from tb_usuario A, tb_ticket B, tb_comision C" +
@@ -591,6 +593,7 @@ namespace Proyecto_Loto.Clases
             }
 
         }
+
         public static float consultar_perdidas_usuario_normal_fecha_juego(int id_usuario, string fecha, int id_juego)
         {
             string consulta = "select tb_ticket.MONTO_PAGADO, tb_ticket.MONTO_APUESTA, tb_comision.COMISIONVENTA, tb_comision.COMISIONPARTICIPACION " +
@@ -642,6 +645,86 @@ namespace Proyecto_Loto.Clases
             {
                 return -1;
             }
+        }
+
+        public static float consultar_ganancias_usuario_hijo_fecha_juego(int id_usuario, string fecha, int id_juego)
+        {
+            MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+            Builder.Server = "localhost";
+            Builder.Port = 3306;
+            Builder.UserID = "root";
+            Builder.Password = "agente86";
+            Builder.Database = "loto";
+
+            MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+            conexion.Open();
+
+            Conexiones.Add(conexion);
+      
+            string consulta = "select U.id_usuario" +
+                " from tb_usuario U" +
+                " where U.id_usuariopadre = " + id_usuario;
+
+            try
+            {
+            cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_ganancias_usuario_normal_fecha_juego(myReader.GetInt16(0), fecha, id_juego) +
+                        consultar_ganancias_usuario_hijo_fecha_juego(myReader.GetInt16(0), fecha, id_juego);
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch
+            {
+                return -1;
+            }
+
+        }
+
+        public static float consultar_perdidas_usuario_hijo_fecha_juego(int id_usuario, string fecha, int id_juego)
+        {
+            MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+            Builder.Server = "localhost";
+            Builder.Port = 3306;
+            Builder.UserID = "root";
+            Builder.Password = "agente86";
+            Builder.Database = "loto";
+
+            MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+            conexion.Open();
+
+            Conexiones.Add(conexion);
+
+            string consulta = "select U.id_usuario" +
+                " from tb_usuario U" +
+                " where U.id_usuariopadre = " + id_usuario;
+
+            try
+            {
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_perdidas_usuario_normal_fecha_juego(myReader.GetInt16(0), fecha, id_juego) +
+                        consultar_perdidas_usuario_hijo_fecha_juego(myReader.GetInt16(0), fecha, id_juego);
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch
+            {
+                return -1;
+            }
+
         }
     }
 }

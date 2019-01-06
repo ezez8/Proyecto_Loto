@@ -95,5 +95,15 @@ namespace Proyecto_Loto
         public float consultar_perdidas_normal_fecha_juego(int id_usuario, string fecha, int id_juego) {
             return Base_de_datos.consultar_perdidas_usuario_normal_fecha_juego(id_usuario, fecha, id_juego);
         }
+
+        public float consultar_ganancias_hijo_fecha_juego(int id_usuario, string fecha, int id_juego)
+        {
+            return Base_de_datos.consultar_ganancias_usuario_hijo_fecha_juego(id_usuario, fecha, id_juego);
+        }
+
+        public float consultar_perdidas_hijo_fecha_juego(int id_usuario, string fecha, int id_juego)
+        {
+            return Base_de_datos.consultar_perdidas_usuario_hijo_fecha_juego(id_usuario,fecha,id_juego);
+        }
     }
 }
