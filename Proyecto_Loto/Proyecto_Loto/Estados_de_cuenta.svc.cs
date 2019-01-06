@@ -16,52 +16,54 @@ namespace Proyecto_Loto
 
         public string conectarBaseDatos()
         {
-            return Base_de_datos.Conectar();
+            Usuario_Normal.Conectar();
+            return Usuario_apostador.Conectar();
+
         }
 
         public string desconectarBaseDatos()
         {
-            return Base_de_datos.Desconectar();
+            return Usuario_apostador.Desconectar();
         }
 
         public float consultar_ganancias_apostador(int id_usuario)
         {
-            return Base_de_datos.consultar_ganancias_usuario_apostador(id_usuario);
+            return Usuario_apostador.consultar_ganancias_usuario_apostador(id_usuario);
         }
 
         public float consultar_perdidas_apostador(int id_usuario)
         {
-            return Base_de_datos.consultar_perdidas_usuario_apostador(id_usuario);
+            return Usuario_apostador.consultar_perdidas_usuario_apostador(id_usuario);
         }
 
         public float consultar_ganancias_apostador_fecha(int id_usuario, string fecha)
         {
-            return Base_de_datos.consultar_ganancias_usuario_apostador_fecha(id_usuario, fecha);
+            return Usuario_apostador.consultar_ganancias_usuario_apostador_fecha(id_usuario, fecha);
         }
 
         public float consultar_perdidas_apostador_fecha(int id_usuario, string fecha)
         {
-            return Base_de_datos.consultar_perdidas_usuario_apostador_fecha(id_usuario, fecha);
+            return Usuario_apostador.consultar_perdidas_usuario_apostador_fecha(id_usuario, fecha);
         }
 
         public float consultar_ganancias_apostador_juego(int id_usuario, int id_juego)
         {
-            return Base_de_datos.consultar_ganancias_usuario_apostador_juego(id_usuario, id_juego);
+            return Usuario_apostador.consultar_ganancias_usuario_apostador_juego(id_usuario, id_juego);
         }
 
         public float consultar_perdidas_apostador_juego(int id_usuario, int id_juego)
         {
-            return Base_de_datos.consultar_perdidas_usuario_apostador_juego(id_usuario, id_juego);
+            return Usuario_apostador.consultar_perdidas_usuario_apostador_juego(id_usuario, id_juego);
         }
 
         public float consultar_ganancias_apostador_fecha_juego(int id_usuario, string fecha, int id_juego)
         {
-            return Base_de_datos.consultar_ganancias_usuario_apostador_fecha_juego(id_usuario, fecha, id_juego);
+            return Usuario_apostador.consultar_ganancias_usuario_apostador_fecha_juego(id_usuario, fecha, id_juego);
         }
 
         public float consultar_perdidas_apostador_fecha_juego(int id_usuario, string fecha, int id_juego)
         {
-            return Base_de_datos.consultar_perdidas_usuario_apostador_fecha_juego(id_usuario, fecha, id_juego);
+            return Usuario_apostador.consultar_perdidas_usuario_apostador_fecha_juego(id_usuario, fecha, id_juego);
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,40 +72,42 @@ namespace Proyecto_Loto
 
         public float consultar_ganancias_normal(int id_usuario)
         {
-            return Base_de_datos.consultar_ganancias_usuario_normal(id_usuario);
+            return Usuario_Normal.consultar_ganancias_usuario_normal(id_usuario);
         }
 
         public float consultar_perdidas_normal(int id_usuario)
         {
-            return Base_de_datos.consultar_perdidas_usuario_normal(id_usuario);
+            return Usuario_Normal.consultar_perdidas_usuario_normal(id_usuario);
         }
 
         public float consultar_ganancias_normal_fecha(int id_usuario, string fecha)
         {
-            return Base_de_datos.consultar_ganancias_usuario_normal_fecha(id_usuario,fecha);
+            return Usuario_Normal.consultar_ganancias_usuario_normal_fecha(id_usuario,fecha);
         }
 
         public float consultar_perdidas_normal_fecha(int id_usuario, string fecha)
         {
-            return Base_de_datos.consultar_perdidas_usuario_normal_fecha(id_usuario, fecha);
+            return Usuario_Normal.consultar_perdidas_usuario_normal_fecha(id_usuario, fecha);
         }
 
-        public float consultar_ganancias_normal_fecha_juego(int id_usuario, string fecha, int id_juego) {
-            return Base_de_datos.consultar_ganancias_usuario_normal_fecha_juego(id_usuario, fecha, id_juego);
+        public float consultar_ganancias_normal_fecha_juego(int id_usuario, string fecha, int id_juego)
+        {
+            return Usuario_Normal.consultar_ganancias_usuario_normal_fecha_juego(id_usuario, fecha, id_juego);
         }
 
-        public float consultar_perdidas_normal_fecha_juego(int id_usuario, string fecha, int id_juego) {
-            return Base_de_datos.consultar_perdidas_usuario_normal_fecha_juego(id_usuario, fecha, id_juego);
+        public float consultar_perdidas_normal_fecha_juego(int id_usuario, string fecha, int id_juego)
+        {
+            return Usuario_Normal.consultar_perdidas_usuario_normal_fecha_juego(id_usuario, fecha, id_juego);
         }
 
         public float consultar_ganancias_hijo_fecha_juego(int id_usuario, string fecha, int id_juego)
         {
-            return Base_de_datos.consultar_ganancias_usuario_hijo_fecha_juego(id_usuario, fecha, id_juego);
+            return Usuario_Normal.consultar_ganancias_usuario_hijo_fecha_juego(id_usuario, fecha, id_juego);
         }
 
         public float consultar_perdidas_hijo_fecha_juego(int id_usuario, string fecha, int id_juego)
         {
-            return Base_de_datos.consultar_perdidas_usuario_hijo_fecha_juego(id_usuario,fecha,id_juego);
+            return Usuario_Normal.consultar_perdidas_usuario_hijo_fecha_juego(id_usuario,fecha,id_juego);
         }
     }
 }
