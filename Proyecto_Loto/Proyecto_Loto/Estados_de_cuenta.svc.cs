@@ -14,7 +14,7 @@ namespace Proyecto_Loto
     {
         //Base_de_datos dataBase = new Base_de_datos();
 
-        public string conectarBaseDatos(string s, int i)
+        public string conectarBaseDatos()
         {
             return Base_de_datos.Conectar();
         }

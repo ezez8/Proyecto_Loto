@@ -13,11 +13,11 @@ namespace Proyecto_Loto
     public interface IEstados_de_cuenta
     {
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/conectar",
+        [WebInvoke(Method = "GET", UriTemplate = "/conectar",
                     ResponseFormat = WebMessageFormat.Json,
                     RequestFormat = WebMessageFormat.Json,
                     BodyStyle = WebMessageBodyStyle.Wrapped)]
-        string conectarBaseDatos(string s, int i);
+        string conectarBaseDatos();
 
         [OperationContract]
         [WebInvoke(Method = "GET", UriTemplate = "/desconectar",

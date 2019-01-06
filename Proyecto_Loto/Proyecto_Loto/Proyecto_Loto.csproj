@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Base_de_datos.cs" />
+    <Compile Include="Clases\UsuarioInvalidoException.cs" />
     <Compile Include="Estados_de_cuenta.svc.cs">
       <DependentUpon>Estados_de_cuenta.svc</DependentUpon>
     </Compile>
