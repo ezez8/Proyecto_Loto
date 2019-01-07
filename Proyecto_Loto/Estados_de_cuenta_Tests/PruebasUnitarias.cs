@@ -366,6 +366,118 @@ namespace Estados_de_cuenta_Tests
         }
 
         [TestMethod]
+        public void consultar_ganancias_hijo_Valido()
+        {
+            float res = edoCuentas.consultar_ganancias_hijo(1);
+            Assert.IsTrue(res >= 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UsuarioInvalidoException))]
+        public void consultar_ganancias_hijo_UsuarioInvalido()
+        {
+            edoCuentas.consultar_ganancias_hijo(-1);
+        }
+
+        [TestMethod]
+        public void consultar_perdidas_hijo_Valido()
+        {
+            float res = edoCuentas.consultar_perdidas_hijo(1);
+            Assert.IsTrue(res >= 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UsuarioInvalidoException))]
+        public void consultar_perdidas_hijo_UsuarioInvalido()
+        {
+            edoCuentas.consultar_perdidas_hijo(-1);
+        }
+
+        [TestMethod]
+        public void consultar_ganancias_hijo_fecha_Valido()
+        {
+            float res = edoCuentas.consultar_ganancias_hijo_fecha(1, "2000-10-02");
+            Assert.IsTrue(res >= 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UsuarioInvalidoException))]
+        public void consultar_ganancias_hijo_fecha_UsuarioInvalido()
+        {
+            edoCuentas.consultar_ganancias_hijo_fecha(-1, "2000-10-02");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FechaInvalidaException))]
+        public void consultar_ganancias_hijo_fecha_FechaInvalida()
+        {
+            edoCuentas.consultar_ganancias_hijo_fecha(1, "3000-10-02");
+        }
+
+        [TestMethod]
+        public void consultar_perdidas_hijo_fecha_Valido()
+        {
+            float res = edoCuentas.consultar_perdidas_hijo_fecha(1, "2000-10-02");
+            Assert.IsTrue(res >= 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UsuarioInvalidoException))]
+        public void consultar_perdidas_hijo_fecha_UsuarioInvalido()
+        {
+            edoCuentas.consultar_perdidas_hijo_fecha(-1, "2000-10-02");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FechaInvalidaException))]
+        public void consultar_perdidas_hijo_fecha_FechaInvalida()
+        {
+            edoCuentas.consultar_perdidas_hijo_fecha(1, "3000-10-02");
+        }
+
+        [TestMethod]
+        public void consultar_ganancias_hijo_juego_Valido()
+        {
+            float res = edoCuentas.consultar_ganancias_hijo_juego(1, 1);
+            Assert.IsTrue(res >= 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UsuarioInvalidoException))]
+        public void consultar_ganancias_hijo_jurgo_UsuarioInvalido()
+        {
+            edoCuentas.consultar_ganancias_hijo_juego(-1, 1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(JuegoInvalidoException))]
+        public void consultar_ganancias_hijo_juego_JuegoInvalido()
+        {
+            edoCuentas.consultar_ganancias_hijo_juego(1, -1);
+        }
+
+        [TestMethod]
+        public void consultar_perdidas_hijo_juego_Valido()
+        {
+            float res = edoCuentas.consultar_perdidas_hijo_juego(1, 1);
+            Assert.IsTrue(res >= 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(UsuarioInvalidoException))]
+        public void consultar_perdidas_hijo_juego_UsuarioInvalido()
+        {
+            edoCuentas.consultar_perdidas_hijo_juego(-1, 1);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(JuegoInvalidoException))]
+        public void consultar_perdidas_hijo_fecha_JuegoInvalido()
+        {
+            edoCuentas.consultar_perdidas_hijo_juego(1, -1);
+        }
+
+        [TestMethod]
         public void consultar_ganancias_usuario_hijo_fecha_juego_Valido()
         {
             edoCuentas.consultar_ganancias_hijo_fecha_juego(1, "2000-10-02", 1);

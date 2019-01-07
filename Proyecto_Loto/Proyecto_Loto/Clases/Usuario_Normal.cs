@@ -562,6 +562,284 @@ namespace Proyecto_Loto.Clases
             }
         }
 
+        public static float consultar_ganancias_usuario_hijo(int id_usuario_padre)
+        {
+            try
+            {
+                Conectar();
+
+                if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
+
+                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+                Builder.Server = "localhost";
+                Builder.Port = 3306;
+                Builder.UserID = "root";
+                Builder.Password = "agente86";
+                Builder.Database = "loto";
+
+                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+                conexion.Open();
+
+                Conexiones.Add(conexion);
+
+                string consulta = "select U.id_usuario" +
+                    " from tb_usuario U" +
+                    " where U.id_usuariopadre = " + id_usuario_padre;
+
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_ganancias_usuario_normal(myReader.GetInt16(0)) +
+                        consultar_ganancias_usuario_hijo(myReader.GetInt16(0));
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch (UsuarioInvalidoException e)
+            {
+                throw e;
+            }
+        }
+
+        public static float consultar_perdidas_usuario_hijo(int id_usuario_padre)
+        {
+            try
+            {
+                Conectar();
+
+                if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
+
+                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+                Builder.Server = "localhost";
+                Builder.Port = 3306;
+                Builder.UserID = "root";
+                Builder.Password = "agente86";
+                Builder.Database = "loto";
+
+                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+                conexion.Open();
+
+                Conexiones.Add(conexion);
+
+                string consulta = "select U.id_usuario" +
+                    " from tb_usuario U" +
+                    " where U.id_usuariopadre = " + id_usuario_padre;
+
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_perdidas_usuario_normal(myReader.GetInt16(0)) +
+                        consultar_perdidas_usuario_hijo(myReader.GetInt16(0));
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch (UsuarioInvalidoException e)
+            {
+                throw e;
+            }
+        }
+
+        public static float consultar_ganancias_usuario_hijo_fecha(int id_usuario_padre, string fecha)
+        {
+            try
+            {
+                Conectar();
+
+                if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
+                if (!isFecha(fecha)) throw new FechaInvalidaException();
+
+                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+                Builder.Server = "localhost";
+                Builder.Port = 3306;
+                Builder.UserID = "root";
+                Builder.Password = "agente86";
+                Builder.Database = "loto";
+
+                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+                conexion.Open();
+
+                Conexiones.Add(conexion);
+
+                string consulta = "select U.id_usuario" +
+                    " from tb_usuario U" +
+                    " where U.id_usuariopadre = " + id_usuario_padre;
+
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_ganancias_usuario_normal_fecha(myReader.GetInt16(0), fecha) +
+                        consultar_ganancias_usuario_hijo_fecha(myReader.GetInt16(0), fecha);
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch (UsuarioInvalidoException e)
+            {
+                throw e;
+            }
+            catch (FechaInvalidaException e)
+            {
+                throw e;
+            }
+        }
+
+        public static float consultar_perdidas_usuario_hijo_fecha(int id_usuario_padre, string fecha)
+        {
+            try
+            {
+                Conectar();
+
+                if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
+                if (!isFecha(fecha)) throw new FechaInvalidaException();
+
+                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+                Builder.Server = "localhost";
+                Builder.Port = 3306;
+                Builder.UserID = "root";
+                Builder.Password = "agente86";
+                Builder.Database = "loto";
+
+                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+                conexion.Open();
+
+                Conexiones.Add(conexion);
+
+                string consulta = "select U.id_usuario" +
+                    " from tb_usuario U" +
+                    " where U.id_usuariopadre = " + id_usuario_padre;
+
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_perdidas_usuario_normal_fecha(myReader.GetInt16(0), fecha) +
+                        consultar_perdidas_usuario_hijo_fecha(myReader.GetInt16(0), fecha);
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch (UsuarioInvalidoException e)
+            {
+                throw e;
+            }
+            catch (FechaInvalidaException e)
+            {
+                throw e;
+            }
+        }
+
+        public static float consultar_ganancias_usuario_hijo_juego(int id_usuario_padre, int id_juego)
+        {
+            try
+            {
+                Conectar();
+
+                if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
+                if (!isJuego(id_juego)) throw new JuegoInvalidoException();
+
+                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+                Builder.Server = "localhost";
+                Builder.Port = 3306;
+                Builder.UserID = "root";
+                Builder.Password = "agente86";
+                Builder.Database = "loto";
+
+                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+                conexion.Open();
+
+                Conexiones.Add(conexion);
+
+                string consulta = "select U.id_usuario" +
+                    " from tb_usuario U" +
+                    " where U.id_usuariopadre = " + id_usuario_padre;
+
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_ganancias_usuario_normal_juego(myReader.GetInt16(0), id_juego) +
+                        consultar_ganancias_usuario_hijo_juego(myReader.GetInt16(0), id_juego);
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch (UsuarioInvalidoException e)
+            {
+                throw e;
+            }
+            catch (JuegoInvalidoException e)
+            {
+                throw e;
+            }
+        }
+
+        public static float consultar_perdidas_usuario_hijo_juego(int id_usuario_padre, int id_juego)
+        {
+            try
+            {
+                Conectar();
+
+                if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
+                if (!isJuego(id_juego)) throw new JuegoInvalidoException();
+
+                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
+                Builder.Server = "localhost";
+                Builder.Port = 3306;
+                Builder.UserID = "root";
+                Builder.Password = "agente86";
+                Builder.Database = "loto";
+
+                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
+                conexion.Open();
+
+                Conexiones.Add(conexion);
+
+                string consulta = "select U.id_usuario" +
+                    " from tb_usuario U" +
+                    " where U.id_usuariopadre = " + id_usuario_padre;
+
+                cmd = new MySqlCommand(consulta, conexion);
+                MySqlDataReader myReader = cmd.ExecuteReader();
+
+                float suma = 0;
+
+                while (myReader.Read())
+                {
+                    suma += consultar_perdidas_usuario_normal_juego(myReader.GetInt16(0), id_juego) +
+                        consultar_perdidas_usuario_hijo_juego(myReader.GetInt16(0), id_juego);
+                }
+                Conexiones.Clear();
+                return suma;
+            }
+            catch (UsuarioInvalidoException e)
+            {
+                throw e;
+            }
+            catch (JuegoInvalidoException e)
+            {
+                throw e;
+            }
+        }
+
         public static float consultar_ganancias_usuario_hijo_fecha_juego(int id_usuario_padre, string fecha, int id_juego)
         {
             try

@@ -109,6 +109,34 @@ namespace Proyecto_Loto
             return Usuario_Normal.consultar_perdidas_usuario_normal_fecha_juego(id_usuario, fecha, id_juego);
         }
 
+        public float consultar_ganancias_hijo(int id_usuario_padre) {
+            return Usuario_Normal.consultar_ganancias_usuario_hijo(id_usuario_padre);
+        }
+
+        public float consultar_perdidas_hijo(int id_usuario_padre)
+        {
+            return Usuario_Normal.consultar_perdidas_usuario_hijo(id_usuario_padre);
+        }
+
+        public float consultar_ganancias_hijo_fecha(int id_usuario_padre, string fecha) {
+            return Usuario_Normal.consultar_ganancias_usuario_hijo_fecha(id_usuario_padre, fecha);
+        }
+
+        public float consultar_perdidas_hijo_fecha(int id_usuario_padre, string fecha)
+        {
+            return Usuario_Normal.consultar_perdidas_usuario_hijo_fecha(id_usuario_padre, fecha);
+        }
+
+        public float consultar_ganancias_hijo_juego(int id_usuario_padre, int id_juego)
+        {
+            return Usuario_Normal.consultar_ganancias_usuario_hijo_juego(id_usuario_padre, id_juego);
+        }
+
+        public float consultar_perdidas_hijo_juego(int id_usuario_padre, int id_juego)
+        {
+            return Usuario_Normal.consultar_perdidas_usuario_hijo_juego(id_usuario_padre, id_juego);
+        }
+
         public float consultar_ganancias_hijo_fecha_juego(int id_usuario_padre, string fecha, int id_juego)
         {
             return Usuario_Normal.consultar_ganancias_usuario_hijo_fecha_juego(id_usuario_padre, fecha, id_juego);

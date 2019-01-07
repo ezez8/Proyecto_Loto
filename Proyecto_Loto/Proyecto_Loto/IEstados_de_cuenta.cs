@@ -112,14 +112,14 @@ namespace Proyecto_Loto
         float consultar_perdidas_normal_fecha(int id_usuario, string fecha);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNorFech",
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNorJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
         float consultar_ganancias_normal_juego(int id_usuario, int id_juego);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorFech",
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
@@ -139,6 +139,47 @@ namespace Proyecto_Loto
            BodyStyle = WebMessageBodyStyle.Wrapped)]
         float consultar_perdidas_normal_fecha_juego(int id_usuario, string fecha, int id_juego);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHij",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_hijo(int id_usuario_padre);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHij",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_hijo(int id_usuario_padre);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHijFech",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_hijo_fecha(int id_usuario_padre, string fecha);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHijFech",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_hijo_fecha(int id_usuario_padre, string fecha);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHijJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_ganancias_hijo_juego(int id_usuario_padre, int id_juego);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHijJue",
+           ResponseFormat = WebMessageFormat.Json,
+           RequestFormat = WebMessageFormat.Json,
+           BodyStyle = WebMessageBodyStyle.Wrapped)]
+        float consultar_perdidas_hijo_juego(int id_usuario_padre, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHijFechJue",
