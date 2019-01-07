@@ -42,3 +42,14 @@ C:\Users\ASUS.PC\Desktop\UCAB\5to Semestre\IS\Proyecto\Proyecto_Loto\Proyecto_Lo
 C:\Users\ASUS.PC\Desktop\UCAB\5to Semestre\IS\Proyecto\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.csproj.CopyComplete
 C:\Users\ASUS.PC\Desktop\UCAB\5to Semestre\IS\Proyecto\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.dll
 C:\Users\ASUS.PC\Desktop\UCAB\5to Semestre\IS\Proyecto\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.pdb
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\bin\Proyecto_Loto.dll.config
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\bin\Proyecto_Loto.dll
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\bin\Proyecto_Loto.pdb
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\bin\MySql.Data.dll
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\bin\Google.Protobuf.dll
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\bin\MySql.Data.xml
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.csprojAssemblyReference.cache
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.csproj.CoreCompileInputs.cache
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.csproj.CopyComplete
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.dll
+C:\Users\ezequ\Documents\Proyectos\ProyectoSoftware\Proyecto_Loto\Proyecto_Loto\Proyecto_Loto\obj\Debug\Proyecto_Loto.pdb

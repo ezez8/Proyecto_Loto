@@ -67,7 +67,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Usuario_apostador.cs" />
-    <Compile Include="Clases\UsuarioInvalidoException.cs" />
+    <Compile Include="Exceptions\FechaInvalidaException.cs" />
+    <Compile Include="Exceptions\JuegoInvalidoException.cs" />
+    <Compile Include="Exceptions\UsuarioInvalidoException.cs" />
     <Compile Include="Clases\Usuario_Normal.cs" />
     <Compile Include="Estados_de_cuenta.svc.cs">
       <DependentUpon>Estados_de_cuenta.svc</DependentUpon>
