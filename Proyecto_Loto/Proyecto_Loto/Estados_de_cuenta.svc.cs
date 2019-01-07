@@ -1,4 +1,5 @@
-﻿using Proyecto_Loto.Clases;
+﻿using MySql.Data.MySqlClient;
+using Proyecto_Loto.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;

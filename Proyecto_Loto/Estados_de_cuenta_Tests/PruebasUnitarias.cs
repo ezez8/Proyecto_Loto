@@ -480,7 +480,8 @@ namespace Estados_de_cuenta_Tests
         [TestMethod]
         public void consultar_ganancias_usuario_hijo_fecha_juego_Valido()
         {
-            edoCuentas.consultar_ganancias_hijo_fecha_juego(1, "2000-10-02", 1);
+            float res = edoCuentas.consultar_ganancias_hijo_fecha_juego(1, "2000-10-02", 1);
+            Assert.IsTrue(res >= 0);
         }
 
         [TestMethod]

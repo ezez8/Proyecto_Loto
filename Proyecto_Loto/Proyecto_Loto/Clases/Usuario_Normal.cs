@@ -13,7 +13,7 @@ namespace Proyecto_Loto.Clases
         public static MySqlConnection Conexion;
         public static MySqlCommand cmd;
         public static MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-        public static ArrayList Conexiones = new ArrayList();
+        public static string stringConexion = "Server=localhost;Database=loto; Uid=root;Pwd=agente86;";
 
         public static Boolean isUsuario(int id_usuario)
         {
@@ -67,12 +67,13 @@ namespace Proyecto_Loto.Clases
 
                 return "Se conecto la base de datos";
             }
-            catch (Exception e)
+            catch (MySqlException e)
             {
 
                 return "No se conecto la base de datos";
             }
         }
+
 
         public static string Desconectar()
         {
@@ -82,7 +83,46 @@ namespace Proyecto_Loto.Clases
 
                 return "Se cerro la base de datos";
             }
-            catch (Exception e)
+            catch (MySqlException e)
+            {
+                return "No se cerro la base de datos";
+            }
+            finally
+            {
+
+            }
+        }
+
+        public static string Conectar(MySqlConnection connection)
+        {
+            try
+            {
+                builder.Server = "localhost";
+                builder.Port = 3306;
+                builder.UserID = "root";
+                builder.Password = "agente86";
+                builder.Database = "loto";
+                connection = new MySqlConnection(builder.ToString());
+                connection.Open();
+
+                return "Se conecto la base de datos";
+            }
+            catch (MySqlException e)
+            {
+
+                return "No se conecto la base de datos";
+            }
+        }
+
+        public static string Desconectar(MySqlConnection connection)
+        {
+            try
+            {
+                connection.Close();
+
+                return "Se cerro la base de datos";
+            }
+            catch (MySqlException e)
             {
                 return "No se cerro la base de datos";
             }
@@ -570,24 +610,15 @@ namespace Proyecto_Loto.Clases
 
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -596,7 +627,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_ganancias_usuario_normal(myReader.GetInt16(0)) +
                         consultar_ganancias_usuario_hijo(myReader.GetInt16(0));
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -613,24 +644,15 @@ namespace Proyecto_Loto.Clases
 
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -639,7 +661,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_perdidas_usuario_normal(myReader.GetInt16(0)) +
                         consultar_perdidas_usuario_hijo(myReader.GetInt16(0));
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -657,24 +679,15 @@ namespace Proyecto_Loto.Clases
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
                 if (!isFecha(fecha)) throw new FechaInvalidaException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -683,7 +696,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_ganancias_usuario_normal_fecha(myReader.GetInt16(0), fecha) +
                         consultar_ganancias_usuario_hijo_fecha(myReader.GetInt16(0), fecha);
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -705,24 +718,15 @@ namespace Proyecto_Loto.Clases
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
                 if (!isFecha(fecha)) throw new FechaInvalidaException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -731,7 +735,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_perdidas_usuario_normal_fecha(myReader.GetInt16(0), fecha) +
                         consultar_perdidas_usuario_hijo_fecha(myReader.GetInt16(0), fecha);
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -753,24 +757,15 @@ namespace Proyecto_Loto.Clases
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
                 if (!isJuego(id_juego)) throw new JuegoInvalidoException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -779,7 +774,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_ganancias_usuario_normal_juego(myReader.GetInt16(0), id_juego) +
                         consultar_ganancias_usuario_hijo_juego(myReader.GetInt16(0), id_juego);
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -801,24 +796,15 @@ namespace Proyecto_Loto.Clases
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
                 if (!isJuego(id_juego)) throw new JuegoInvalidoException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -827,7 +813,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_perdidas_usuario_normal_juego(myReader.GetInt16(0), id_juego) +
                         consultar_perdidas_usuario_hijo_juego(myReader.GetInt16(0), id_juego);
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -850,24 +836,15 @@ namespace Proyecto_Loto.Clases
                 if (!isFecha(fecha)) throw new FechaInvalidaException();
                 if (!isJuego(id_juego)) throw new JuegoInvalidoException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -876,7 +853,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_ganancias_usuario_normal_fecha_juego(myReader.GetInt16(0), fecha, id_juego) +
                         consultar_ganancias_usuario_hijo_fecha_juego(myReader.GetInt16(0), fecha, id_juego);
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
@@ -903,24 +880,15 @@ namespace Proyecto_Loto.Clases
                 if (!isFecha(fecha)) throw new FechaInvalidaException();
                 if (!isJuego(id_juego)) throw new JuegoInvalidoException();
 
-                MySqlConnectionStringBuilder Builder = new MySqlConnectionStringBuilder();
-                Builder.Server = "localhost";
-                Builder.Port = 3306;
-                Builder.UserID = "root";
-                Builder.Password = "agente86";
-                Builder.Database = "loto";
-
-                MySqlConnection conexion = new MySqlConnection(Builder.ToString());
-                conexion.Open();
-
-                Conexiones.Add(conexion);
+                MySqlConnection connection = new MySqlConnection(stringConexion);
+                connection.Open();
 
                 string consulta = "select U.id_usuario" +
                     " from tb_usuario U" +
                     " where U.id_usuariopadre = " + id_usuario_padre;
 
-                cmd = new MySqlCommand(consulta, conexion);
-                MySqlDataReader myReader = cmd.ExecuteReader();
+                MySqlCommand com = new MySqlCommand(consulta, connection);
+                MySqlDataReader myReader = com.ExecuteReader();
 
                 float suma = 0;
 
@@ -929,7 +897,7 @@ namespace Proyecto_Loto.Clases
                     suma += consultar_perdidas_usuario_normal_fecha_juego(myReader.GetInt16(0), fecha, id_juego) +
                         consultar_perdidas_usuario_hijo_fecha_juego(myReader.GetInt16(0), fecha, id_juego);
                 }
-                Conexiones.Clear();
+                connection.Clone();
                 return suma;
             }
             catch (UsuarioInvalidoException e)
