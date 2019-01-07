@@ -92,46 +92,7 @@ namespace Proyecto_Loto.Clases
 
             }
         }
-
-        public static string Conectar(MySqlConnection connection)
-        {
-            try
-            {
-                builder.Server = "localhost";
-                builder.Port = 3306;
-                builder.UserID = "root";
-                builder.Password = "agente86";
-                builder.Database = "loto";
-                connection = new MySqlConnection(builder.ToString());
-                connection.Open();
-
-                return "Se conecto la base de datos";
-            }
-            catch (MySqlException e)
-            {
-
-                return "No se conecto la base de datos";
-            }
-        }
-
-        public static string Desconectar(MySqlConnection connection)
-        {
-            try
-            {
-                connection.Close();
-
-                return "Se cerro la base de datos";
-            }
-            catch (MySqlException e)
-            {
-                return "No se cerro la base de datos";
-            }
-            finally
-            {
-
-            }
-        }
-
+         
         public static float consultar_ganancias_usuario_normal(int id_usuario)
         {
             try

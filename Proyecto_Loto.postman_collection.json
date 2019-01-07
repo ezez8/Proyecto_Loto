@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b75cfc56-4add-45fa-a016-456b472e63cd",
+		"_postman_id": "538b46b4-c9b6-4126-9d9b-b7da62494990",
 		"name": "Proyecto_Loto",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -8,7 +8,7 @@
 		{
 			"name": "conectar",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -19,7 +19,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"s\" : \"betulio\",\n\t\"i\" : 0\n}"
+					"raw": ""
 				},
 				"url": {
 					"raw": "http://localhost:51409/Estados_de_cuenta.svc/conectar",
@@ -37,7 +37,7 @@
 			"response": []
 		},
 		{
-			"name": "consultar_ganancia_apostador_todo",
+			"name": "consultar_ganancia_apostador",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -502,15 +502,15 @@
 			"response": []
 		},
 		{
-			"name": "consultar_perdidas_hijo_fecha",
+			"name": "consultar_perdidas_hijo_fecha_juego",
 			"request": {
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
 						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -527,6 +527,254 @@
 					"path": [
 						"Estados_de_cuenta.svc",
 						"consultarPerHijFechJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_hijo_id_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 2,\n\t\"id_juego\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_hijo_id_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 2,\n\t\"id_juego\" : 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_normal_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 2,\n\t\"id_juego\" : 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanNorJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanNorJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_normal_juego",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario\" : 2,\n\t\"id_juego\" : 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerNorJue",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerNorJue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_hijo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario_padre\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanHij",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanHij"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_hijo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario_padre\" : 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerHij",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerHij"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_ganancias_hijo_fecha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario_padre\" : 1,\n\t\"fecha\" : \"1996-01-01\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarGanHijFech",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarGanHijFech"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "consultar_perdidas_hijo_fecha",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_usuario_padre\" : 1,\n\t\"fecha\" : \"1996-01-01\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:51409/Estados_de_cuenta.svc/consultarPerHijFech",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "51409",
+					"path": [
+						"Estados_de_cuenta.svc",
+						"consultarPerHijFech"
 					]
 				}
 			},
