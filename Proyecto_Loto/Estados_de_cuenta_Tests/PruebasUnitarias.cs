@@ -9,527 +9,564 @@ namespace Estados_de_cuenta_Tests
     [TestClass]
     public class PruebasUnitarias
     {
-        private Estados_de_cuenta edoCuentas;
-
+        Estados_de_cuenta edoCuentas;
+        Usuario usuario;
+        Respuesta respuesta;
 
         [TestInitialize]
         public void inicializar()
         {
-           edoCuentas  = new Estados_de_cuenta();
+            usuario = new Usuario();
+            edoCuentas = new Estados_de_cuenta();
+        }
+
+        ///Usuario///
+
+        [TestMethod]
+        public void isUsuario_true()
+        {
+            bool respuesta = usuario.isUsuario(1);
+            Assert.IsTrue(respuesta);
         }
 
         [TestMethod]
-        public void conectarBaseDatos_Valido()
+        public void isUsuario_false()
         {
-            string res = edoCuentas.conectarBaseDatos();
-            Assert.AreEqual(res, "Se conecto la base de datos");
+            bool respuesta = usuario.isUsuario(-1);
+            Assert.IsFalse(respuesta);
+        }
+
+        [TestMethod]
+        public void isFecha_true()
+        {
+            bool respuesta = usuario.isFecha("1997-01-01");
+            Assert.IsTrue(respuesta);
+        }
+
+        [TestMethod]
+        public void isFechar_false()
+        {
+            bool respuesta = usuario.isFecha("3000-01-01");
+            Assert.IsFalse(respuesta);
+        }
+
+        [TestMethod]
+        public void isJuego_true()
+        {
+            bool respuesta = usuario.isJuego(1);
+            Assert.IsTrue(respuesta);
+        }
+
+        [TestMethod]
+        public void isJuego_false()
+        {
+            bool respuesta = usuario.isJuego(-1);
+            Assert.IsFalse(respuesta);
         }
 
         //////////Usuario Apostador////////////
 
         [TestMethod]
-        public void consultar_ganancias_usuario_apostador_Valido()
+        public void consultar_ganancia_usuario_apostador_valido()
         {
-            float res = edoCuentas.consultar_ganancias_apostador(1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_apostador_UsuarioInvalido()
+        public void consultar_ganancia_usuario_apostador_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador(-1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(-1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_perdidas_usuario_apostador_Valido()
+        public void consultar_perdida_usuario_apostador_valido()
         {
-            float res = edoCuentas.consultar_perdidas_apostador(1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_apostador_UsuarioInvalido()
+        public void consultar_perdida_usuario_apostador_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador(-1);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(-1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_ganancias_usuario_apostador_fecha_Valido()
+        public void consultar_ganancia_usuario_apostador_fecha_valido()
         {
-            float res = edoCuentas.consultar_ganancias_apostador_fecha(1,"1997-01-01");
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, "1997-01-01");
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_apostador_fecha_UsuarioInvalido()
+        public void consultar_ganancia_usuario_apostador_fecha_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_fecha(-1, "1997-01-01");
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(-1, "1997-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_ganancias_usuario_apostador_fecha_FechaInvalida()
+        public void consultar_ganancia_usuario_apostador_fecha_fecha_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_fecha(1, "3000-01-01");
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, "3000-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        public void consultar_perdidas_usuario_apostador_fecha_Valido()
+        public void consultar_perdida_usuario_apostador_fecha_valido()
         {
-            float res = edoCuentas.consultar_perdidas_apostador_fecha(1, "1997-01-01");
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, "1997-01-01");
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_apostador_fecha_UsuarioInvalido()
+        public void consultar_perdida_usuario_apostador_fecha_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_fecha(-1, "1997-01-01");
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(-1, "1997-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_perdidas_usuario_apostador_fecha_FechaInvalida()
+        public void consultar_perdida_usuario_apostador_fecha_fecha_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_fecha(1, "3000-01-01");
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, "3000-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        public void consultar_ganancias_apostador_juego_Valido()
+        public void consultar_ganancia_usuario_apostador_juego_valido()
         {
-            float res = edoCuentas.consultar_ganancias_apostador_juego(1, 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_apostador_juego_UsuarioInvalido()
+        public void consultar_ganancia_usuario_apostador_juego_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_juego(-1, 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(-1, 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_ganancias_apostador_juego_JuegoInvalido()
+        public void consultar_ganancia_usuario_apostador_juego_juego_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_juego(1, -1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_perdidas_apostador_juego_Valido()
+        public void consultar_perdida_usuario_apostador_juego_valido()
         {
-            float res = edoCuentas.consultar_perdidas_apostador_juego(1, 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_apostador_juego_UsuarioInvalido()
+        public void consultar_perdida_usuario_apostador_juego_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_juego(-1, 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(-1, 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_perdidas_apostador_juego_JuegoInvalido()
+        public void consultar_perdida_usuario_apostador_juego_juego_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_juego(1, -1);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_ganancias_usuario_apostador_fecha_juego_Valido()
+        public void consultar_ganancia_usuario_apostador_fecha_juego_valido()
         {
-            float res = edoCuentas.consultar_ganancias_apostador_fecha_juego(1, "1997-01-01", 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, "1997-01-01", 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_apostador_fecha_juego_UsuarioInvalido()
+        public void consultar_ganancia_usuario_apostador_fecha_juego_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_fecha_juego(-1, "1997-01-01", 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(-1, "1997-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_ganancias_usuario_apostador_fecha_juego_FechaInvalida()
+        public void consultar_ganancia_usuario_apostador_fecha_juego_fecha_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_fecha_juego(1, "3000-01-01", 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, "3000-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_ganancias_usuario_apostador_fecha_juego_JuegoInvalido()
+        public void consultar_ganancia_usuario_apostador_fecha_juego_juego_invalido()
         {
-            edoCuentas.consultar_ganancias_apostador_fecha_juego(1, "1997-01-01", -1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_apostador(1, "1997-01-01", -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_perdidas_usuario_apostador_fecha_juego_Valido()
+        public void consultar_perdida_usuario_apostador_fecha_juego_valido()
         {
-            float res = edoCuentas.consultar_perdidas_apostador_fecha_juego(1, "1997-01-01", 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, "1997-01-01", 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_apostador_fecha_juego_UsuarioInvalido()
+        public void consultar_perdida_usuario_apostador_fecha_juego_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_fecha_juego(-1, "1997-01-01", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(-1, "1997-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_perdidas_usuario_apostador_fecha_juego_FechaInvalida()
+        public void consultar_perdida_usuario_apostador_fecha_juego_fecha_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_fecha_juego(1, "3000-01-01", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, "3000-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_perdidas_usuario_apostador_fecha_juego_JuegoInvalido()
+        public void consultar_perdida_usuario_apostador_fecha_juego_juego_invalido()
         {
-            edoCuentas.consultar_perdidas_apostador_fecha_juego(1, "1997-01-01", -1);
+            respuesta = edoCuentas.consultar_perdida_usuario_apostador(1, "1997-01-01", -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         ///////Usuario Normal////////
 
         [TestMethod]
-        public void consultar_ganancias_usuario_normal_Valido()
+        public void consultar_ganancia_usuario_normal_valido()
         {
-            float res = edoCuentas.consultar_ganancias_normal(1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_normal_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_normal(-1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(-1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_perdidas_usuario_normal_Valido()
+        public void consultar_perdida_usuario_normal_valido()
         {
-            float res = edoCuentas.consultar_perdidas_normal(1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_normal_UsuarioInvalido()
+        public void consultar_perdida_usuario_normal_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_normal(-1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(-1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_ganancias_usuario_normal_fecha_Valido()
+        public void consultar_ganancia_usuario_normal_fecha_valido()
         {
-            float res = edoCuentas.consultar_ganancias_normal_fecha(1,"2000-10-02");
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, "1997-01-01");
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_normal_fecha_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_fecha_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_normal_fecha(-1, "1997-01-01");
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(-1, "1997-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_ganancias_usuario_normal_fecha_FechaInvalida()
+        public void consultar_ganancia_usuario_normal_fecha_fecha_invalido()
         {
-            edoCuentas.consultar_ganancias_normal_fecha(1, "3000-01-01");
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, "3000-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        public void consultar_perdidas_usuario_normal_fecha_Valido()
+        public void consultar_perdida_usuario_normal_fecha_valido()
         {
-            float res = edoCuentas.consultar_perdidas_normal_fecha(1, "2000-10-02");
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, "1997-01-01");
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_normal_fecha_UsuarioInvalido()
+        public void consultar_perdida_usuario_normal_fecha_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_normal_fecha(-1, "1997-01-01");
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(-1, "1997-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_perdidas_usuario_normal_fecha_FechaInvalida()
+        public void consultar_perdida_usuario_normal_fecha_fecha_invalido()
         {
-            edoCuentas.consultar_perdidas_normal_fecha(1, "3000-01-01");
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, "3000-01-01");
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        public void consultar_ganancias_normal_juego_Valido()
+        public void consultar_ganancia_usuario_normal_juego_valido()
         {
-            float res = edoCuentas.consultar_ganancias_normal_juego(1, 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_normal_juego_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_juego_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_normal_juego(-1, 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(-1, 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
+        }
+
+        [TestMethod]        public void consultar_ganancia_usuario_normal_juego_juego_invalido()
+        {
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
+        }
+
+        [TestMethod]        public void consultar_perdida_usuario_normal_juego_valido()
+        {
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_ganancias_normal_juego_JuegoInvalido()
+        public void consultar_perdida_usuario_normal_juego_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_normal_juego(1, -1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(-1, 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_perdidas_normal_juego_Valido()
+        public void consultar_perdida_usuario_normal_juego_juego_invalido()
         {
-            float res = edoCuentas.consultar_perdidas_normal_juego(1, 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_normal_juego_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_fecha_juego_valido()
         {
-            edoCuentas.consultar_perdidas_normal_juego(-1, 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, "1997-01-01", 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_perdidas_normal_juego_JuegoInvalido()
+        public void consultar_ganancia_usuario_normal_fecha_juego_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_normal_juego(1, -1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(-1, "1997-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
+        }
+
+        [TestMethod]        public void consultar_ganancia_usuario_normal_fecha_juego_fecha_invalido()
+        {
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, "3000-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        public void consultar_ganancias_usuario_normal_fecha_juego_Valido()
+        public void consultar_ganancia_usuario_normal_fecha_juego_juego_invalido()
         {
-            float res = edoCuentas.consultar_ganancias_normal_fecha_juego(1, "2000-10-02",1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal(1, "1997-01-01", -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_normal_fecha_juego_UsuarioInvalido()
+        public void consultar_perdida_usuario_normal_fecha_juego_valido()
         {
-            edoCuentas.consultar_ganancias_normal_fecha_juego(-1, "2000-10-02", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, "1997-01-01", 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_ganancias_usuario_normal_fecha_juego_FechaInvalida()
+        public void consultar_perdida_usuario_normal_fecha_juego_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_normal_fecha_juego(1, "3000-10-02", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(-1, "1997-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_ganancias_usuario_normal_fecha_juego_JuegoInvalido()
+        public void consultar_perdida_usuario_normal_fecha_juego_fecha_invalido()
         {
-            edoCuentas.consultar_ganancias_normal_fecha_juego(1, "2000-10-02", -1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, "3000-01-01", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        public void consultar_perdidas_usuario_normal_fecha_juego_Valido()
+        public void consultar_perdida_usuario_normal_fecha_juego_juego_invalido()
         {
-            float res = edoCuentas.consultar_perdidas_normal_fecha_juego(1, "2000-10-02", 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal(1, "1997-01-01", -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
+        }
+
+
+        [TestMethod]
+        public void consultar_ganancia_usuario_normal_hijos_valido()
+        {
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_normal_fecha_juego_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_hijos_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_normal_fecha_juego(-1, "2000-10-02", 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(-1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_perdidas_usuario_normal_fecha_juego_FechaInvalida()
+        public void consultar_perdida_usuario_normal_hijos_valido()
         {
-            edoCuentas.consultar_perdidas_normal_fecha_juego(1, "3000-10-02", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_perdidas_usuario_normal_fecha_juego_JuegoInvalido()
+        public void consultar_perdida_usuario_normal_hijos_usuario_invalido()
         {
-            edoCuentas.consultar_perdidas_normal_fecha_juego(1, "2000-10-02", -1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(-1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_ganancias_hijo_Valido()
+        public void consultar_ganancia_usuario_normal_hijos_fecha_valido()
         {
-            float res = edoCuentas.consultar_ganancias_hijo(1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, "2000-10-02");
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_hijo_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_hijos_fecha_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_hijo(-1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(-1, "2000-10-02");
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_perdidas_hijo_Valido()
+        public void consultar_ganancia_usuario_normal_hijos_fecha_fecha_invalido()
         {
-            float res = edoCuentas.consultar_perdidas_hijo(1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, "3000-10-02");
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_hijo_UsuarioInvalido()
+        public void consultar_perdida_usuario_normal_hijos_fecha_valido()
         {
-            edoCuentas.consultar_perdidas_hijo(-1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, "2000-10-02");
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        public void consultar_ganancias_hijo_fecha_Valido()
+        public void consultar_perdida_usuario_normal_hijos_fecha_usuario_invalido()
         {
-            float res = edoCuentas.consultar_ganancias_hijo_fecha(1, "2000-10-02");
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(-1, "2000-10-02");
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_hijo_fecha_UsuarioInvalido()
+        public void consultar_perdida_usuario_normal_hijos_fecha_fecha_invalido()
         {
-            edoCuentas.consultar_ganancias_hijo_fecha(-1, "2000-10-02");
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, "3000-10-02");
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_ganancias_hijo_fecha_FechaInvalida()
+        public void consultar_ganancia_usuario_normal_hijos_juego_valido()
         {
-            edoCuentas.consultar_ganancias_hijo_fecha(1, "3000-10-02");
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        public void consultar_perdidas_hijo_fecha_Valido()
+        public void consultar_ganancia_usuario_normal_hijos_jurgo_usuario_invalido()
         {
-            float res = edoCuentas.consultar_perdidas_hijo_fecha(1, "2000-10-02");
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(-1, 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_hijo_fecha_UsuarioInvalido()
+        public void consultar_ganancia_usuario_normal_hijos_juego_juego_invalido()
         {
-            edoCuentas.consultar_perdidas_hijo_fecha(-1, "2000-10-02");
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_perdidas_hijo_fecha_FechaInvalida()
+        public void consultar_perdida_usuario_normal_hijos_juego_valido()
         {
-            edoCuentas.consultar_perdidas_hijo_fecha(1, "3000-10-02");
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        public void consultar_ganancias_hijo_juego_Valido()
+        public void consultar_perdida_usuario_normal_hijos_juego_usuario_invalido()
         {
-            float res = edoCuentas.consultar_ganancias_hijo_juego(1, 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(-1, 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_hijo_jurgo_UsuarioInvalido()
+        public void consultar_perdida_usuario_normal_hijos_fecha_juego_invalido()
         {
-            edoCuentas.consultar_ganancias_hijo_juego(-1, 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_ganancias_hijo_juego_JuegoInvalido()
+        public void consultar_ganancia_usuario_hijos_fecha_juego_valido()
         {
-            edoCuentas.consultar_ganancias_hijo_juego(1, -1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, "2000-10-02", 1);
+            Assert.IsTrue(respuesta.Res >= 0);
         }
 
         [TestMethod]
-        public void consultar_perdidas_hijo_juego_Valido()
+        public void consultar_ganancia_usuario_hijos_fecha_juego_usuario_invalido()
         {
-            float res = edoCuentas.consultar_perdidas_hijo_juego(1, 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(-1, "2000-10-02", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_hijo_juego_UsuarioInvalido()
+        public void consultar_ganancia_usuario_hijos_fecha_juego_fecha_invalido()
         {
-            edoCuentas.consultar_perdidas_hijo_juego(-1, 1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, "3000-10-02", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_perdidas_hijo_fecha_JuegoInvalido()
+        public void consultar_ganancia_usuario_hijos_fecha_juego_juego_invalido()
         {
-            edoCuentas.consultar_perdidas_hijo_juego(1, -1);
+            respuesta = edoCuentas.consultar_ganancia_usuario_normal_hijos(1, "2000-10-02", -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
 
         [TestMethod]
-        public void consultar_ganancias_usuario_hijo_fecha_juego_Valido()
+        public void consultar_perdida_usuario_hijos_fecha_juego_valido()
         {
-            float res = edoCuentas.consultar_ganancias_hijo_fecha_juego(1, "2000-10-02", 1);
-            Assert.IsTrue(res >= 0);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, "2000-10-02", 1);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_ganancias_usuario_hijo_fecha_juego_UsuarioInvalido()
+        public void consultar_perdida_usuario_hijos_fecha_juego_usuario_invalido()
         {
-            edoCuentas.consultar_ganancias_hijo_fecha_juego(-1, "2000-10-02", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(-1, "2000-10-02", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Usuario no registrado en la base de datos");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_ganancias_usuario_hijo_fecha_juego_FechaInvalida()
+        public void consultar_perdida_usuario_hijos_fecha_juego_fecha_invalido()
         {
-            edoCuentas.consultar_ganancias_hijo_fecha_juego(1, "3000-10-02", 1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, "3000-10-02", 1);
+            Assert.AreEqual(respuesta.Mensaje, "Fecha mayor a la actual");
         }
 
         [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_ganancias_usuario_hijo_fecha_juego_JuegoInvalido()
+        public void consultar_perdida_usuario_hijos_fecha_juego_juego_invalido()
         {
-            edoCuentas.consultar_ganancias_hijo_fecha_juego(1, "2000-10-02", -1);
-        }
-
-        [TestMethod]
-        public void consultar_perdidas_usuario_hijo_fecha_juego_Valido()
-        {
-            edoCuentas.consultar_perdidas_hijo_fecha_juego(1, "2000-10-02", 1);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(UsuarioInvalidoException))]
-        public void consultar_perdidas_usuario_hijo_fecha_juego_UsuarioInvalido()
-        {
-            edoCuentas.consultar_perdidas_hijo_fecha_juego(-1, "2000-10-02", 1);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(FechaInvalidaException))]
-        public void consultar_perdidas_usuario_hijo_fecha_juego_FechaInvalida()
-        {
-            edoCuentas.consultar_perdidas_hijo_fecha_juego(1, "3000-10-02", 1);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(JuegoInvalidoException))]
-        public void consultar_perdidas_usuario_hijo_fecha_juego_JuegoInvalido()
-        {
-            edoCuentas.consultar_perdidas_hijo_fecha_juego(1, "2000-10-02", -1);
+            respuesta = edoCuentas.consultar_perdida_usuario_normal_hijos(1, "2000-10-02", -1);
+            Assert.AreEqual(respuesta.Mensaje, "Juego no registrado en la base de datos");
         }
     }
 }
