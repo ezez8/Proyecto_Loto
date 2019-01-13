@@ -26,7 +26,7 @@ namespace Proyecto_Loto
                    RequestFormat = WebMessageFormat.Json,
                    BodyStyle = WebMessageBodyStyle.Wrapped)]
         Respuesta consultar_perdida_usuario_apostador(int id_usuario);
-
+    /*    
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanFech",
                    ResponseFormat = WebMessageFormat.Json,
@@ -184,6 +184,23 @@ namespace Proyecto_Loto
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
         Respuesta consultar_perdida_usuario_normal_hijos(int id_usuario_padre, string fecha, int id_juego);
+   */
+    }
+
+    [DataContract]
+    public class Respuesta : MsgRespuesta
+    {
+        [DataMember]
+        public float Res { get; set; }
+    }
+
+    [DataContract]
+    public class MsgRespuesta
+    {
+        [DataMember]
+        public string MensajeRespuesta { get; set; }
+        [DataMember]
+        public string Error { get; set; }
     }
 
 

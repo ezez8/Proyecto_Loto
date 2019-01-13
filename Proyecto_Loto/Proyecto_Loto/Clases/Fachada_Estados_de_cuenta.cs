@@ -5,12 +5,12 @@ using System.Web;
 
 namespace Proyecto_Loto.Clases
 {
-    public class Estados_de_cuentaComandos
+    public class Fachada_Estados_de_cuenta
     {
         Usuario_apostador usuario_apostador;
         Usuario_normal usuario_normal;
 
-        public Estados_de_cuentaComandos()
+        public Fachada_Estados_de_cuenta()
         {
             usuario_apostador = new Usuario_apostador();
             usuario_normal = new Usuario_normal();
@@ -25,12 +25,12 @@ namespace Proyecto_Loto.Clases
         {
             return usuario_apostador.consultar_perdida(id_usuario);
         }
-
+        /*
         public Respuesta consultar_ganancia_usuario_apostador(int id_usuario, string fecha)
         {
             return usuario_apostador.consultar_ganancia(id_usuario, fecha);
         }
-
+        
         public Respuesta consultar_perdida_usuario_apostador(int id_usuario, string fecha)
         {
             return usuario_apostador.consultar_perdida(id_usuario, fecha);
@@ -138,6 +138,6 @@ namespace Proyecto_Loto.Clases
         public Respuesta consultar_perdida_usuario_normal_hijos(int id_usuario_padre, string fecha, int id_juego)
         {
             return usuario_normal.consultar_perdida_hijos(id_usuario_padre, fecha, id_juego);
-        }
+        }*/
     }
 }

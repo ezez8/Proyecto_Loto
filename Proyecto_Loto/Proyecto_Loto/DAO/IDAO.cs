@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Loto.DAO
 {
-    interface IBase_de_datos
+    interface IDAO
     {
         Respuesta_Base_de_datos consultar(string consulta);
     }     

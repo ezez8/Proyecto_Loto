@@ -13,12 +13,12 @@ namespace Proyecto_Loto
     // NOTE: In order to launch WCF Test Client for testing this service, please select Estados_de_cuenta.svc or Estados_de_cuenta.svc.cs at the Solution Explorer and start debugging.
     public class Estados_de_cuenta : IEstados_de_cuenta
     {
-        Estados_de_cuentaComandos comandos = new Estados_de_cuentaComandos();
+        Fachada_Estados_de_cuenta comandos = new Fachada_Estados_de_cuenta();
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///Usuario Apostador///
         /////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
         public Respuesta consultar_ganancia_usuario_apostador(int id_usuario)
         {
             return comandos.consultar_ganancia_usuario_apostador(id_usuario);
@@ -28,7 +28,7 @@ namespace Proyecto_Loto
         {
             return comandos.consultar_perdida_usuario_apostador(id_usuario);
         }
-
+    /*    
         public Respuesta consultar_ganancia_usuario_apostador(int id_usuario, string fecha)
         {
             return comandos.consultar_ganancia_usuario_apostador(id_usuario, fecha);
@@ -139,5 +139,6 @@ namespace Proyecto_Loto
         {
             return comandos.consultar_perdida_usuario_normal_hijos(id_usuario_padre, fecha, id_juego);
         }
+        */
     }
 }

@@ -6,14 +6,14 @@ using System.Web;
 
 namespace Proyecto_Loto.DAO
 {
-    public class Base_de_datos_MySQL : IBase_de_datos
+    public class DAO_MySQL : IDAO
     {
         MySqlConnection conexion;
         MySqlConnectionStringBuilder builder;
         MySqlCommand comando;
         MySqlDataReader reader;
 
-        public Base_de_datos_MySQL()
+        public DAO_MySQL()
         {
             builder = new MySqlConnectionStringBuilder();
             builder.Server = "localhost";
@@ -27,7 +27,7 @@ namespace Proyecto_Loto.DAO
 
         }
 
-        Respuesta_Base_de_datos IBase_de_datos.consultar(string consulta)
+        Respuesta_Base_de_datos IDAO.consultar(string consulta)
         {
             Respuesta_Base_de_datos respuesta = new Respuesta_Base_de_datos();
             try

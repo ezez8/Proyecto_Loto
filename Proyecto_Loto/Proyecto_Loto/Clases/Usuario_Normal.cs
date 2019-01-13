@@ -15,10 +15,9 @@ namespace Proyecto_Loto.Clases
         {
 
         }
-
+        
         public Respuesta consultar_ganancia(int id_usuario)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -53,24 +52,21 @@ namespace Proyecto_Loto.Clases
                         totalperdida += (total_ganado - total_apostado) * comisionparticipacion / 100;
                 }
 
-                if (totalganancia > totalperdida)
+                if (total_ganado > total_apostado)
                 {
-                    respuesta.Res = totalganancia - totalperdida;
-                    return respuesta;
+                    return new Respuesta() { Res = total_ganado - total_apostado, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+               return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida(int id_usuario)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {      
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -104,27 +100,22 @@ namespace Proyecto_Loto.Clases
                     else if (total_ganado > total_apostado)
                         totalperdida += (total_ganado - total_apostado) * comisionparticipacion / 100;
                 }
-
-
-
+                               
                 if (totalperdida > totalganancia)
                 {
-                    respuesta.Res = totalperdida - totalganancia;
-                    return respuesta;
+                    return new Respuesta() { Res = totalperdida - totalganancia, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia(int id_usuario, string fecha)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {            
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -161,29 +152,25 @@ namespace Proyecto_Loto.Clases
                         totalperdida += (total_ganado - total_apostado) * comisionparticipacion / 100;
                 }
 
-                if (totalganancia > totalperdida)
+                if (total_ganado > total_apostado)
                 {
-                    respuesta.Res = totalganancia - totalperdida;
-                    return respuesta;
+                    return new Respuesta() { Res = total_ganado - total_apostado, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida(int id_usuario, string fecha)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -222,27 +209,23 @@ namespace Proyecto_Loto.Clases
 
                 if (totalperdida > totalganancia)
                 {
-                    respuesta.Res = totalperdida - totalganancia;
-                    return respuesta;
+                    return new Respuesta() { Res = totalperdida - totalganancia, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia(int id_usuario, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {                
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -279,29 +262,25 @@ namespace Proyecto_Loto.Clases
                         totalperdida += (total_ganado - total_apostado) * comisionparticipacion / 100;
                 }
 
-                if (totalganancia > totalperdida)
+                if (total_ganado > total_apostado)
                 {
-                    respuesta.Res = totalganancia - totalperdida;
-                    return respuesta;
+                    return new Respuesta() { Res = total_ganado - total_apostado, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+               return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida(int id_usuario, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -340,27 +319,23 @@ namespace Proyecto_Loto.Clases
 
                 if (totalperdida > totalganancia)
                 {
-                    respuesta.Res = totalperdida - totalganancia;
-                    return respuesta;
+                    return new Respuesta() { Res = totalperdida - totalganancia, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia(int id_usuario, string fecha, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -403,34 +378,29 @@ namespace Proyecto_Loto.Clases
                         totalperdida += (total_ganado - total_apostado) * comisionparticipacion / 100;
                 }
 
-                if (totalganancia > totalperdida)
+                if (total_ganado > total_apostado)
                 {
-                    respuesta.Res = totalganancia - totalperdida;
-                    return respuesta;
+                    return new Respuesta() { Res = total_ganado - total_apostado, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida(int id_usuario, string fecha, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {                
                 if (!isUsuario(id_usuario)) throw new UsuarioInvalidoException();
@@ -474,32 +444,27 @@ namespace Proyecto_Loto.Clases
 
                 if (totalperdida > totalganancia)
                 {
-                    respuesta.Res = totalperdida - totalganancia;
-                    return respuesta;
+                    return new Respuesta() { Res = totalperdida - totalganancia, MensajeRespuesta = "Operación exitosa" }; ;
                 }
 
-                return respuesta;
+                return new Respuesta() { Res = 0, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia_hijos(int id_usuario_padre)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();             
@@ -518,14 +483,11 @@ namespace Proyecto_Loto.Clases
                         consultar_ganancia_hijos((int)respuestas.Filas[i][0]).Res;
                 }
 
-                respuesta.Res = suma;
-                
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
@@ -550,20 +512,16 @@ namespace Proyecto_Loto.Clases
                         consultar_perdida_hijos((int)respuestas.Filas[i][0]).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia_hijos(int id_usuario_padre, string fecha)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {             
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
@@ -583,25 +541,20 @@ namespace Proyecto_Loto.Clases
                         consultar_ganancia_hijos((int)respuestas.Filas[i][0],fecha).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida_hijos(int id_usuario_padre, string fecha)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
@@ -622,25 +575,20 @@ namespace Proyecto_Loto.Clases
                         consultar_perdida_hijos((int)respuestas.Filas[i][0],fecha).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia_hijos(int id_usuario_padre, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
@@ -660,25 +608,20 @@ namespace Proyecto_Loto.Clases
                         consultar_ganancia_hijos((int)respuestas.Filas[i][0],id_juego).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida_hijos(int id_usuario_padre, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
@@ -698,25 +641,20 @@ namespace Proyecto_Loto.Clases
                         consultar_perdida_hijos((int)respuestas.Filas[i][0],id_juego).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_ganancia_hijos(int id_usuario_padre, string fecha, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {               
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
@@ -737,30 +675,24 @@ namespace Proyecto_Loto.Clases
                         consultar_ganancia_hijos((int)respuestas.Filas[i][0],fecha,id_juego).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
 
         public Respuesta consultar_perdida_hijos(int id_usuario_padre, string fecha, int id_juego)
         {
-            Respuesta respuesta = new Respuesta();
             try
             {              
                 if (!isUsuario(id_usuario_padre)) throw new UsuarioInvalidoException();
@@ -781,24 +713,19 @@ namespace Proyecto_Loto.Clases
                         consultar_perdida_hijos((int)respuestas.Filas[i][0], fecha, id_juego).Res;
                 }
 
-                respuesta.Res = suma;
-
-                return respuesta;
+                return new Respuesta() { Res = suma, MensajeRespuesta = "Operación exitosa" }; ;
             }
             catch (UsuarioInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (FechaInvalidaException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
             catch (JuegoInvalidoException e)
             {
-                respuesta.Mensaje = e.Message;
-                return respuesta;
+                return new Respuesta() { Error = e.Message }; ;
             }
         }
     }
