@@ -66,10 +66,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\Fachada_Estados_de_cuenta.cs" />
+    <Compile Include="Clases\Estados_de_cuentaComandos.cs" />
     <Compile Include="Clases\Usuario.cs" />
-    <Compile Include="DAO\DAO_MySQL.cs" />
-    <Compile Include="DAO\IDAO.cs" />
+    <Compile Include="DAO\Base_de_datos_MySQL.cs" />
+    <Compile Include="DAO\IBase_de_datos.cs" />
     <Compile Include="DAO\Respuesta_Base_de_datos.cs" />
     <Compile Include="Clases\Usuario_apostador.cs" />
     <Compile Include="Exceptions\FechaInvalidaException.cs" />

@@ -8,11 +8,11 @@ namespace Proyecto_Loto.Clases
 {
     public class Usuario
     {
-        IDAO base_de_datos;
+        IBase_de_datos base_de_datos;
 
         public Usuario()
         {
-            base_de_datos = new DAO_MySQL();
+            base_de_datos = new Base_de_datos_MySQL();
         }
 
         public Respuesta_Base_de_datos consultar(string consulta) {

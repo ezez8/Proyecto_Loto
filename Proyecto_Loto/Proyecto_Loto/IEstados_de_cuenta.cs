@@ -26,48 +26,48 @@ namespace Proyecto_Loto
                    RequestFormat = WebMessageFormat.Json,
                    BodyStyle = WebMessageBodyStyle.Wrapped)]
         Respuesta consultar_perdida_usuario_apostador(int id_usuario);
-    /*    
+
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanFech",
                    ResponseFormat = WebMessageFormat.Json,
                    RequestFormat = WebMessageFormat.Json,
                    BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_apostador(int id_usuario, string fecha);
+        Respuesta consultar_ganancia_usuario_apostador_fecha(int id_usuario, string fecha);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerFech",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_apostador(int id_usuario, string fecha);
+        Respuesta consultar_perdida_usuario_apostador_fecha(int id_usuario, string fecha);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_apostador(int id_usuario, int id_juego);
+        Respuesta consultar_ganancia_usuario_apostador_juego(int id_usuario, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_apostador(int id_usuario, int id_juego);
+        Respuesta consultar_perdida_usuario_apostador_juego(int id_usuario, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanFechJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_apostador(int id_usuario, string fecha, int id_juego);
+        Respuesta consultar_ganancia_usuario_apostador_fecha_juego(int id_usuario, string fecha, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerFechJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_apostador(int id_usuario, string fecha, int id_juego);
+        Respuesta consultar_perdida_usuario_apostador_fecha_juego(int id_usuario, string fecha, int id_juego);
 
         ////////////////////
         ///Usuario Normal///
@@ -92,42 +92,42 @@ namespace Proyecto_Loto
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_normal(int id_usuario, string fecha);
+        Respuesta consultar_ganancia_usuario_normal_fecha(int id_usuario, string fecha);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorFech",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_normal(int id_usuario, string fecha);
+        Respuesta consultar_perdida_usuario_normal_fecha(int id_usuario, string fecha);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNorJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_normal(int id_usuario, int id_juego);
+        Respuesta consultar_ganancia_usuario_normal_juego(int id_usuario, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_normal(int id_usuario, int id_juego);
+        Respuesta consultar_perdida_usuario_normal_juego(int id_usuario, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanNorFechJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_normal(int id_usuario, string fecha, int id_juego);
+        Respuesta consultar_ganancia_usuario_normal_fecha_juego(int id_usuario, string fecha, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerNorFechJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_normal(int id_usuario, string fecha, int id_juego);
+        Respuesta consultar_perdida_usuario_normal_fecha_juego(int id_usuario, string fecha, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHij",
@@ -148,60 +148,59 @@ namespace Proyecto_Loto
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_normal_hijos(int id_usuario_padre, string fecha);
+        Respuesta consultar_ganancia_usuario_normal_hijos_fecha(int id_usuario_padre, string fecha);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHijFech",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_normal_hijos(int id_usuario_padre, string fecha);
+        Respuesta consultar_perdida_usuario_normal_hijos_fecha(int id_usuario_padre, string fecha);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHijJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_normal_hijos(int id_usuario_padre, int id_juego);
+        Respuesta consultar_ganancia_usuario_normal_hijos_juego(int id_usuario_padre, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHijJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_normal_hijos(int id_usuario_padre, int id_juego);
+        Respuesta consultar_perdida_usuario_normal_hijos_juego(int id_usuario_padre, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarGanHijFechJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_ganancia_usuario_normal_hijos(int id_usuario_padre, string fecha, int id_juego);
+        Respuesta consultar_ganancia_usuario_normal_hijos_fecha_juego(int id_usuario_padre, string fecha, int id_juego);
 
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/consultarPerHijFechJue",
            ResponseFormat = WebMessageFormat.Json,
            RequestFormat = WebMessageFormat.Json,
            BodyStyle = WebMessageBodyStyle.Wrapped)]
-        Respuesta consultar_perdida_usuario_normal_hijos(int id_usuario_padre, string fecha, int id_juego);
-   */
+        Respuesta consultar_perdida_usuario_normal_hijos_fecha_juego(int id_usuario_padre, string fecha, int id_juego);
     }
+
 
     [DataContract]
-    public class Respuesta : MsgRespuesta
+    public class Respuesta
     {
         [DataMember]
-        public float Res { get; set; }
-    }
+        public string mensaje { get; set; }
 
-    [DataContract]
-    public class MsgRespuesta
-    {
         [DataMember]
-        public string MensajeRespuesta { get; set; }
-        [DataMember]
-        public string Error { get; set; }
+        public float respuesta { get; set; }
+
+        public Respuesta()
+        {
+            respuesta = 0;
+            mensaje = null;
+        }
     }
-
-
+    
 }

@@ -7,16 +7,15 @@ namespace Proyecto_Loto.DAO
 {
     public class Respuesta_Base_de_datos
     {
-        string mensaje;
+        public string Mensaje { get; set; }
         List<List<float>> filas;
 
-        public string Mensaje { get => mensaje; set => mensaje = value; }
         public List<List<float>> Filas { get => filas; set => filas = value; }
 
         public Respuesta_Base_de_datos()
         {
             filas = new List<List<float>>();
-            mensaje = null;
+            Mensaje = null;
         }
 
         public bool isFilas() {
